@@ -1,0 +1,75 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <cmath>
+
+// Clase que representa un motor
+class Motor {
+public:
+  void mover(float angulo) {
+    std::cout << "Mover motor a " << angulo << " grados." << std::endl;
+    // Lógica para enviar comando al motor
+  }
+};
+
+// Clase que representa un sensor
+class Sensor {
+public:
+  float leer() {
+    std::cout << "Leer sensor." << std::endl;
+    // Lógica para leer el sensor y obtener un valor
+    return 0.0f;
+  }
+};
+
+// Clase que representa un telescopio
+class Telescopio {
+public:
+  void apuntar(float azimut, float elevacion) {
+    std::cout << "Apuntar telescopio a (" << azimut << ", " << elevacion << ")." << std::endl;
+    // Lógica para enviar comando al telescopio
+  }
+};
+
+// Clase que representa el driver
+class Driver {
+public:
+  Driver() : motor(), sensor(), telescopio() {}
+  
+  // Métodos para controlar los motores
+  void moverHorario(float angulo) {
+    motor.mover(angulo);
+  }
+  
+  void moverAntiHorario(float angulo) {
+    motor.mover(-angulo);
+  }
+  
+  // Método para leer el sensor
+  float leerSensor() {
+    return sensor.leer();
+  }
+  
+  // Método para apuntar el telescopio
+  void apuntarTelescopio(float azimut, float elevacion) {
+    telescopio.apuntar(azimut, elevacion);
+  }
+  
+private:
+  Motor motor;
+  Sensor sensor;
+  Telescopio telescopio;
+};
+
+// Función principal
+int main() {
+  Driver driver;
+  
+  // Ejemplo de uso del driver
+  driver.moverHorario(45.0f);
+  driver.moverAntiHorario(30.0f);
+  float valorSensor = driver.leerSensor();
+  driver.apuntarTelescopio(180.0f, 45.0f);
+  
+  return 0;
+}
